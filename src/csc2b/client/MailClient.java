@@ -34,14 +34,29 @@ public class MailClient {
         out.flush();
     }
 
-    public void sendMail(String fromAddress, String toAddress, String date, String subject, String message) throws IOException {
+    public void sendMail(String fromAddress, String toAddress, String ccAddress, String date, String subject, String message) throws IOException {
         writeMessage(pw, "HELO Papercut");
         readResponse(br);
         writeMessage(pw, "MAIL FROM: <" + fromAddress + ">");
         readResponse(br);
         writeMessage(pw, "RCPT TO: <" + toAddress + ">");
         readResponse(br);
+        writeMessage(pw, "RCPT TO: <" + ccAddress + ">");
+        readResponse(br);
         writeMessage(pw, "DATA");
+        readResponse(br);
+        writeMessage(pw, "From: <" + fromAddress + ">");
+        readResponse(br);
+        writeMessage(pw, "To: <" + toAddress + ">");
+        readResponse(br);
+        writeMessage(pw, "CC: <" + ccAddress + ">");
+        readResponse(br);
+        writeMessage(pw, "Date: " + date);
+        readResponse(br);
+        writeMessage(pw, "Subject: " + subject + "\n");
+        writeMessage(pw, message + "\r\n.\r\n");
+        readResponse(br);
+        writeMessage(pw, "QUIT");
         readResponse(br);
     }
 }
