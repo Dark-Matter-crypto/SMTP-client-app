@@ -46,7 +46,7 @@ public class MailClient {
         out.flush();
     }
 
-    public void sendMail(String fromAddress, String toAddress, String subject, String message){
+    public void sendMail(String fromAddress, String toAddress, String ccAddress, String subject, String message){
         DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
 
@@ -56,7 +56,7 @@ public class MailClient {
         readResponse(br);
         writeMessage(pw, "RCPT TO: <" + toAddress + ">");
         readResponse(br);
-        writeMessage(pw, "RCPT TO: <" + toAddress + ">");
+        writeMessage(pw, "RCPT TO: <" + ccAddress + ">");
         readResponse(br);
         writeMessage(pw, "DATA");
         readResponse(br);

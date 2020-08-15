@@ -1,16 +1,22 @@
-import csc2b.client.MailClient;
+import csc2b.gui.MailPane;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-import java.io.IOException;
+public class Main extends Application {
 
-public class Main {
+    public static void main(String[] args) {
+        launch(args);
+    }
 
-    public static void main(String[] args) throws IOException {
-        MailClient smtpClient = new MailClient();
-        String toAddress = "recipient@csc2b.uj.ac.za";
-        String fromAddress = "sendername@csc2b.uj.ac.za";
-        String subject = "Test sub";
-        String message = "Hello World.";
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        primaryStage.setTitle("Email Service");
+        MailPane layout = new MailPane();
+        Scene scene = new Scene(layout, 750, 500);
 
-        smtpClient.sendMail(fromAddress, toAddress, subject, message);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
     }
 }
