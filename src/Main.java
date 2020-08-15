@@ -15,7 +15,9 @@ public class Main extends Application {
         MailPane layout = new MailPane();
         Scene scene = new Scene(layout, 750, 500);
 
+        //Present scene to stage
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
 
     }

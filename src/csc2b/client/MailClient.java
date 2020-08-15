@@ -13,6 +13,7 @@ public class MailClient {
     private static PrintWriter pw = null;
     private static BufferedReader br = null;
 
+    //Set up constructor to connect to smtp server
     public MailClient(){
         try {
             Socket smtp = new Socket("localhost", 25);
@@ -27,6 +28,7 @@ public class MailClient {
         }
     }
 
+    //Method to read response from the server
     private static String readResponse(BufferedReader br){
         String res = null;
         try {
@@ -41,11 +43,13 @@ public class MailClient {
         }
     }
 
+    //Method to write to the server
     private static void writeMessage(PrintWriter out, String message){
         out.println(message);
         out.flush();
     }
 
+    //Method to send email to the smtp server
     public void sendMail(String fromAddress, String toAddress, String ccAddress, String subject, String message){
         DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();

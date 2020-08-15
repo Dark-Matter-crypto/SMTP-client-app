@@ -23,6 +23,7 @@ public class MailPane extends StackPane {
 
     public MailPane(){
 
+        //Create layout nodes
         TextField fromAddressForm = new TextField("");
         fromAddressForm.setPrefWidth(400);
         TextField toAddressForm = new TextField("");
@@ -58,6 +59,7 @@ public class MailPane extends StackPane {
             }
         });
 
+        //Add nodes to pane
         HBox fromBox = new HBox();
         fromBox.setPadding(new Insets(25, 10, 5, 30));
         fromBox.getChildren().add(new Label("From:      "));
